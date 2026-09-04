@@ -1,0 +1,39 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#0b1019;--panel:#121925;--panel2:#171f2c;--border:#202a39;
+  --text:#e8edf5;--muted:#8995a8;--gold:#f3c74f;--accent:#62d878;
+}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#172232 0,#0b1019 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{height:76px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(10,15,23,.9);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#75df75,#278c52);font-weight:1000;font-size:22px;box-shadow:0 7px 24px #0007}
+.brand-title{font-weight:1000;letter-spacing:2px}.brand-subtitle{font-size:11px;color:var(--muted)}
+.top-actions{display:flex;gap:8px}
+.primary,.ghost{border:0;border-radius:10px;padding:10px 15px;font-weight:800}
+.primary{background:#dce7f5;color:#101722}.ghost{background:#1a2331;color:#c8d2df;border:1px solid #283344}
+main{width:min(1050px,92%);margin:0 auto;padding:34px 0 70px}
+.hero{display:flex;justify-content:space-between;gap:25px;align-items:flex-end;margin-bottom:25px}
+h1{font-size:34px;margin:0 0 7px;letter-spacing:-1px}.hero p{margin:0;color:var(--muted)}
+.tier-key{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;max-width:470px}
+.tier{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:27px;padding:0 8px;border-radius:8px;background:#1c2431;font-size:12px;font-weight:1000}
+.ht1{color:#f2c84b}.lt1{color:#f1e6a1}.ht2{color:#aeb9c9}.lt2{color:#9aa5b5}.ht3{color:#c78950}.lt3{color:#d19a69}.ht4{color:#9a76e6}.lt4{color:#a990d9}.ht5{color:#d27d8c}.lt5{color:#b87c88}
+.players{display:flex;flex-direction:column;gap:16px}
+.player-card{background:linear-gradient(145deg,#151e2a,#111824);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:0 12px 35px #0002}
+.player-head{display:grid;grid-template-columns:225px 1fr auto;gap:18px;align-items:center}
+.banner{height:98px;position:relative;overflow:hidden;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);background:linear-gradient(120deg,#566676,#8798a8)}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,transparent 48%,#ffffff18 49%,transparent 66%)}
+.banner img{width:100%;height:100%;object-fit:cover;image-rendering:auto}
+.rank-number{position:absolute;left:17px;bottom:5px;font-size:51px;line-height:1;font-weight:1000;color:#fff;text-shadow:0 3px 6px #000b}
+.info h2{margin:0 0 5px;font-size:27px}.rank{color:#aeb8c8;font-size:15px}.rank.empty-rank{color:#586477;font-style:italic}
+.region{font-weight:1000;font-size:17px;padding:11px 14px;border-radius:11px;background:#47202a;color:#f07889;min-width:68px;text-align:center}
+.region.EU{background:#173d22;color:#69ed81}.region.AS{background:#1e3453;color:#79b6ff}.region.OC{background:#3c2f16;color:#f0c766}.region.SA{background:#3e253f;color:#e59ddd}.region.AF{background:#2c3b1e;color:#b9df6a}.region.ME{background:#3b2920;color:#e3a977}
+.kits-title{font-size:15px;color:#aeb8c8;font-weight:900;margin:20px 0 10px}.kits{display:flex;gap:10px;flex-wrap:wrap}
+.kit{width:82px;text-align:center}.kit-icon{height:57px;width:57px;margin:auto;border-radius:50%;background:#0c121d;border:3px solid #202a3a;display:grid;place-items:center;font-size:29px;box-shadow:0 4px 12px #0003}
+.kit-name{font-size:10px;color:#8d99ab;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kit .tier{margin-top:4px}
+.no-tier{color:#596577!important;background:#18202c!important}
+.card-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:17px}.small-btn{padding:7px 10px;border-radius:8px;background:#1b2431;color:#aeb9c9;border:1px solid #293547;font-size:12px;font-weight:800}.danger{color:#f17e8d}
+.empty{border:1px dashed #334154;border-radius:20px;padding:55px 20px;text-align:center;color:var(--muted)}.empty-icon{font-size:40px;color:#71d77e}.empty h2{color:var(--text);margin:8px 0}.empty p{margin-bottom:18px}
+.hidden{display:none!important}.modal{position:fixed;inset:0;background:#000b;z-index:30;display:grid;place-items:center;padding:16px}.modal-card{width:min(760px,100%);max-height:92vh;overflow:auto;background:#111925;border:1px solid #293546;border-radius:20px;padding:22px;box-shadow:0 25px 70px #0009}.modal-head{display:flex;align-items:center;justify-content:space-between}.modal-head h2{margin:0}.close{background:none;border:0;color:#aab5c5;font-size:30px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:18px}label{display:flex;flex-direction:column;gap:7px;color:#aeb9c9;font-size:13px;font-weight:800}input,select{background:#0b111b;border:1px solid #293547;border-radius:9px;padding:11px;color:#e8edf5;outline:none}input:focus,select:focus{border-color:#6e829e}.kits-editor{margin-top:22px}.kits-editor h3{margin:0 0 4px}.muted{color:var(--muted);font-size:13px}.kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kit-row{background:#171f2b;border:1px solid #253144;border-radius:10px;padding:10px}.kit-row strong{display:block;margin-bottom:7px;font-size:13px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+@media(max-width:720px){.topbar{padding:0 4%;height:auto;min-height:70px}.top-actions .ghost{display:none}.hero{display:block}.tier-key{justify-content:flex-start;margin-top:15px}.player-head{grid-template-columns:145px 1fr auto;gap:11px}.banner{height:82px}.rank-number{font-size:40px;left:10px}.info h2{font-size:20px}.region{min-width:55px;padding:9px 7px;font-size:14px}.kit{width:72px}.kit-icon{width:50px;height:50px;font-size:24px}.form-grid,.kit-grid{grid-template-columns:1fr}.primary{padding:9px 11px}}
+@media(max-width:430px){main{width:94%}.player-card{padding:14px}.player-head{grid-template-columns:105px 1fr;}.region{grid-column:2;justify-self:start;margin-top:-4px}.banner{height:75px}.kits{gap:5px}.kit{width:62px}.topbar .brand-subtitle{display:none}.brand-mark{width:37px;height:37px}}

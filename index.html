@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRASS Tier List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">G</div>
+      <div>
+        <div class="brand-title">GRASS</div>
+        <div class="brand-subtitle">Minecraft PvP Tier List</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="addBtn" class="primary">＋ Add Player</button>
+      <button id="exportBtn" class="ghost">Export</button>
+      <button id="importBtn" class="ghost">Import</button>
+      <input id="importFile" type="file" accept=".json" hidden>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Player Rankings</h1>
+        <p>Customize players, regions, optional ranks, and every kit tier.</p>
+      </div>
+      <div class="tier-key">
+        <span class="tier ht1">HT1</span>
+        <span class="tier lt1">LT1</span>
+        <span class="tier ht2">HT2</span>
+        <span class="tier lt2">LT2</span>
+        <span class="tier ht3">HT3</span>
+        <span class="tier lt3">LT3</span>
+        <span class="tier ht4">HT4</span>
+        <span class="tier lt4">LT4</span>
+        <span class="tier ht5">HT5</span>
+        <span class="tier lt5">LT5</span>
+      </div>
+    </section>
+
+    <div id="emptyState" class="empty">
+      <div class="empty-icon">✦</div>
+      <h2>No players yet</h2>
+      <p>Tap <b>Add Player</b> to create your first ranking.</p>
+      <button id="emptyAddBtn" class="primary">＋ Add Player</button>
+    </div>
+
+    <section id="players" class="players"></section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="modalTitle">Add Player</h2>
+        <button id="closeModal" class="close">×</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Player name
+          <input id="nameInput" maxlength="24" placeholder="Enter player name">
+        </label>
+        <label>
+          Region
+          <select id="regionInput">
+            <option>NA</option>
+            <option>EU</option>
+            <option>AS</option>
+            <option>OC</option>
+            <option>SA</option>
+            <option>AF</option>
+            <option>ME</option>
+          </select>
+        </label>
+        <label>
+          Rank (optional)
+          <input id="rankInput" maxlength="24" placeholder="Leave empty if none">
+        </label>
+        <label>
+          Player image URL (optional)
+          <input id="imageInput" placeholder="https://...">
+        </label>
+      </div>
+
+      <div class="kits-editor">
+        <h3>Kit tiers</h3>
+        <p class="muted">Choose a tier, or choose <b>No Tier</b> if the player has not been tested.</p>
+        <div id="kitInputs" class="kit-grid"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelBtn" class="ghost">Cancel</button>
+        <button id="saveBtn" class="primary">Save Player</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
