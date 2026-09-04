@@ -1,105 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRASS Tier List</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRASS • Minecraft PvP Tier List</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-mark">G</div>
-      <div>
-        <div class="brand-title">GRASS</div>
-        <div class="brand-subtitle">Minecraft PvP Tier List</div>
-      </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" aria-label="GRASS logo">
+        <defs><linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9cff7a"/><stop offset="1" stop-color="#1e9c56"/></linearGradient></defs>
+        <rect x="3" y="3" width="94" height="94" rx="25" fill="#14251c"/>
+        <path d="M24 69c6-27 17-40 29-46-1 14-5 25-13 33 13-5 23-15 29-31 7 13 8 28 2 44H24Z" fill="url(#leaf)"/>
+        <path d="M20 76h61" stroke="#c8ff9d" stroke-width="6" stroke-linecap="round"/>
+      </svg>
     </div>
-    <div class="top-actions">
-      <button id="addBtn" class="primary">＋ Add Player</button>
-      <button id="exportBtn" class="ghost">Export</button>
-      <button id="importBtn" class="ghost">Import</button>
-      <input id="importFile" type="file" accept=".json" hidden>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div>
-        <h1>Player Rankings</h1>
-        <p>Customize players, regions, optional ranks, and every kit tier.</p>
-      </div>
-      <div class="tier-key">
-        <span class="tier ht1">HT1</span>
-        <span class="tier lt1">LT1</span>
-        <span class="tier ht2">HT2</span>
-        <span class="tier lt2">LT2</span>
-        <span class="tier ht3">HT3</span>
-        <span class="tier lt3">LT3</span>
-        <span class="tier ht4">HT4</span>
-        <span class="tier lt4">LT4</span>
-        <span class="tier ht5">HT5</span>
-        <span class="tier lt5">LT5</span>
-      </div>
-    </section>
-
-    <div id="emptyState" class="empty">
-      <div class="empty-icon">✦</div>
-      <h2>No players yet</h2>
-      <p>Tap <b>Add Player</b> to create your first ranking.</p>
-      <button id="emptyAddBtn" class="primary">＋ Add Player</button>
-    </div>
-
-    <section id="players" class="players"></section>
-  </main>
-
-  <div id="modal" class="modal hidden">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h2 id="modalTitle">Add Player</h2>
-        <button id="closeModal" class="close">×</button>
-      </div>
-
-      <div class="form-grid">
-        <label>
-          Player name
-          <input id="nameInput" maxlength="24" placeholder="Enter player name">
-        </label>
-        <label>
-          Region
-          <select id="regionInput">
-            <option>NA</option>
-            <option>EU</option>
-            <option>AS</option>
-            <option>OC</option>
-            <option>SA</option>
-            <option>AF</option>
-            <option>ME</option>
-          </select>
-        </label>
-        <label>
-          Rank (optional)
-          <input id="rankInput" maxlength="24" placeholder="Leave empty if none">
-        </label>
-        <label>
-          Player image URL (optional)
-          <input id="imageInput" placeholder="https://...">
-        </label>
-      </div>
-
-      <div class="kits-editor">
-        <h3>Kit tiers</h3>
-        <p class="muted">Choose a tier, or choose <b>No Tier</b> if the player has not been tested.</p>
-        <div id="kitInputs" class="kit-grid"></div>
-      </div>
-
-      <div class="modal-actions">
-        <button id="cancelBtn" class="ghost">Cancel</button>
-        <button id="saveBtn" class="primary">Save Player</button>
-      </div>
-    </div>
+    <div><b>GRASS</b><small>Minecraft PvP Tier List</small></div>
   </div>
+  <div class="actions">
+    <button class="primary" id="addBtn">＋ Add Player</button>
+    <button class="ghost" id="loginBtn">🔐 Editor Login</button>
+    <button class="ghost" id="exportBtn">Export</button>
+    <button class="ghost" id="importBtn">Import</button>
+    <input id="importFile" type="file" accept=".json" hidden>
+  </div>
+</header>
 
-  <script src="script.js"></script>
+<main>
+<section class="intro">
+  <div>
+    <div class="eyebrow">GRASS TIER LIST</div>
+    <h1 id="siteTitle">Minecraft PvP Rankings</h1>
+    <p id="siteDescription">Official GRASS player rankings, kit tiers, Top 20 players, and Champions Events.</p>
+  </div>
+  <div class="tier-key" id="tierKey"></div>
+</section>
+
+<section class="tabs">
+  <button class="tab active" data-page="playersPage">Players</button>
+  <button class="tab" data-page="kitPage">Kit Tier List</button>
+  <button class="tab" data-page="topPage">Top 20</button>
+  <button class="tab" data-page="eventsPage">Champions Events</button>
+  <button class="tab admin-only" data-page="settingsPage">⚙ Settings</button>
+</section>
+
+<section id="playersPage" class="page active">
+  <div id="players" class="players"></div>
+  <div id="emptyState" class="empty"><div class="spark">✦</div><h2>No players yet</h2><p>Add players and assign each kit a tier from LT5 to HT1.</p><button class="primary" id="emptyAdd">＋ Add Player</button></div>
+</section>
+
+<section id="kitPage" class="page">
+  <div class="section-head"><div><h2>Kit Tier List</h2><p>See the highest-ranked players for every kit.</p></div></div>
+  <div id="kitBoards" class="kit-boards"></div>
+</section>
+
+<section id="topPage" class="page">
+  <div class="section-head"><div><h2>Top 20 Players</h2><p>Customize the order yourself. Only players you add appear here.</p></div></div>
+  <div id="top20" class="top20"></div>
+</section>
+
+<section id="eventsPage" class="page">
+  <div class="section-head"><div><h2>Champions Events</h2><p>Custom events, winners, dates, and descriptions.</p></div><button class="primary admin-only" id="addEvent">＋ Add Event</button></div>
+  <div id="events" class="event-grid"></div>
+</section>
+
+<section id="settingsPage" class="page">
+  <div class="settings-card">
+    <h2>Website Settings</h2>
+    <label>Website title<input id="titleInput"></label>
+    <label>Description<textarea id="descInput" rows="3"></textarea></label>
+    <label>Admin / editor access code<input id="codeInput" type="password" placeholder="Change the demo code"></label>
+    <p class="warning">Important: this starter uses browser storage for the demo permission system. It is not a secure server-side login. For real multi-user permissions on GitHub Pages, connect Firebase/Supabase authentication and database rules.</p>
+    <button class="primary" id="saveSettings">Save Settings</button>
+  </div>
+</section>
+</main>
+
+<div class="modal hidden" id="playerModal"><div class="modal-card">
+<div class="modal-head"><h2 id="playerModalTitle">Add Player</h2><button class="close" id="closePlayer">×</button></div>
+<div class="form-grid">
+<label>Player name<input id="pName" maxlength="30" placeholder="Player name"></label>
+<label>Region<select id="pRegion"><option>NA</option><option>EU</option><option>AS</option><option>OC</option><option>SA</option><option>AF</option><option>ME</option></select></label>
+<label>Rank (optional)<input id="pRank" maxlength="30" placeholder="Leave empty if none"></label>
+<label>Player image URL (optional)<input id="pImage" placeholder="https://..."></label>
+</div>
+<h3>Kit Tiers</h3><p class="muted">Choose <b>No Tier</b> if the player has no tier for that kit.</p>
+<div id="kitInputs" class="kit-grid"></div>
+<div class="modal-actions"><button class="ghost" id="cancelPlayer">Cancel</button><button class="primary" id="savePlayer">Save Player</button></div>
+</div></div>
+
+<div class="modal hidden" id="loginModal"><div class="modal-card small">
+<div class="modal-head"><h2>Editor Login</h2><button class="close" id="closeLogin">×</button></div>
+<p class="muted">Only people with the editor/admin code can edit this demo.</p>
+<label>Access code<input id="loginCode" type="password"></label>
+<div class="modal-actions"><button class="ghost" id="closeLogin2">Cancel</button><button class="primary" id="doLogin">Enter</button></div>
+</div></div>
+
+<div class="modal hidden" id="eventModal"><div class="modal-card small">
+<div class="modal-head"><h2 id="eventTitle">Add Event</h2><button class="close" id="closeEvent">×</button></div>
+<label>Event name<input id="eName" placeholder="Champions Event"></label>
+<label>Date<input id="eDate" placeholder="September 2026"></label>
+<label>Winner<input id="eWinner" placeholder="Winner / Team"></label>
+<label>Description<textarea id="eDesc" rows="4" placeholder="Describe the event..."></textarea></label>
+<div class="modal-actions"><button class="ghost" id="cancelEvent">Cancel</button><button class="primary" id="saveEvent">Save Event</button></div>
+</div></div>
+<script src="script.js"></script>
 </body>
 </html>
